@@ -114,6 +114,7 @@ ul.SignLog li a {
     margin-bottom: 20px;
 }
 
+/*
 .wrapper .btn {
     width: 100%;
     height: 45px;
@@ -131,4 +132,46 @@ ul.SignLog li a {
 
 .wrapper .btn:hover {
     background: #45a049;
+}
+
+*/
+
+.wrapper .btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: #f2f2f2; /* Initial color is a light gray */
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    overflow: hidden; /* Hide the shine overflow */
+}
+
+/* Shine effect on hover */
+.wrapper .btn:hover {
+    background: #45a049; /* Hover color */
+}
+
+/* Shine effect pseudo-element */
+.wrapper .btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, transparent 50%, rgba(255, 255, 255, 0.8) 100%);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none; /* Allow interactions with the button underneath */
+}
+
+/* Shine effect animation on hover */
+.wrapper .btn:hover::before {
+    transform: translate(150%, 150%);
 }
