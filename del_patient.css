@@ -7,14 +7,16 @@
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     background-image: url('Images/patient_details.jpg');
     background-color: #cccccc;
     background-size: cover;
     background-position: center;
     margin: 0;
+    position: relative; /* Set position to relative */
 }
 
 /* Navigation bar Start */
@@ -68,9 +70,7 @@ ul.SignLog li a {
 
 /* Navigation bar End */
 
-
 .wrapper {
-    margin-top: 30px;
     width: 420px;
     background: rgba(255, 255, 255, 0.7);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -78,6 +78,7 @@ ul.SignLog li a {
     padding: 30px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #333;
+    margin-top: 10px; /* Adjusted margin-top */
 }
 
 .wrapper h1 {
@@ -88,8 +89,6 @@ ul.SignLog li a {
 }
 
 .wrapper .input-box {
-    position: relative;
-    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -109,22 +108,10 @@ ul.SignLog li a {
     color: #888;
 }
 
-.wrapper .gender-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Display Male and Female options with radio buttons and labels on the same line */
-.wrapper .gender-options label {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.wrapper .input-box input[type="radio"] {
-    transform: scale(0.9); /* Adjust the scale factor as needed */
-    margin-right: 5px; /* Optional: Add some spacing between the radio button and label */
+/* Forgot Password Section Styles */
+.forgot-password {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .wrapper .btn {

@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('Images/patient_details.jpg');
+    background-image: url('Images/admin_dashboard.jpg');
     background-color: #cccccc;
     background-size: cover;
     background-position: center;
@@ -18,13 +18,17 @@ body {
 }
 
 /* Navigation bar Start */
+
 ul.navbar {
     list-style-type: none;
     margin: 0;
     padding:0;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
     width: 100%;
     position: absolute; /* Set position to absolute */
     top: 0; /* Position at the top */
@@ -37,7 +41,7 @@ ul.navbar li {
 
 ul.navbar li a {
     display: block;
-    color: #333;
+    color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -60,24 +64,22 @@ ul.SignLog li {
 
 ul.SignLog li a {
     display: block;
-    color: #333;
+    color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-
 /* Navigation bar End */
 
 
 .wrapper {
-    margin-top: 30px;
     width: 420px;
-    background: rgba(255, 255, 255, 0.7);
+    background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
     border-radius: 10px;
     padding: 30px 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);    color: #333;
 }
 
 .wrapper h1 {

@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Details</title>
-    <link rel="stylesheet" href="PD-style.css">
+    <link rel="stylesheet" href="add_staff.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
-    <!-- Navigation Bar -->
-    <ul class="navbar">
-        <li><a href="staff_dashboard.html">Home</a></li>
 
+    <ul class="navbar">
+        <li><a href="admin_dashboard.html">Home</a></li>
 
         <ul class="SignLog">
-        <li><a href="logins.php">LogOut</a></li>
+            <li><a href="logins.php">LogOut</a></li>
         </ul>
     </ul>
+
 
     <div class="wrapper">
         <form action="">

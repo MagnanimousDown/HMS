@@ -10,11 +10,66 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('admin_dashboard.jpg') no-repeat;
+    background: url('Images/admin_dashboard.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     margin: 0;
 }
+
+/* Navigation bar Start */
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    width: 100%;
+    position: absolute; /* Set position to absolute */
+    top: 0; /* Position at the top */
+    font-weight: 600;
+}
+
+ul.navbar li {
+    float: left;
+}
+
+ul.navbar li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.navbar li a:hover {
+    background-color: #ddd;
+}
+
+ul.SignLog {
+    list-style-type: none;
+    margin: 0;
+    float: right;
+}
+
+ul.SignLog li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ul.SignLog li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Navigation bar End */
+
 
 .wrapper {
     width: 420px;
@@ -59,7 +114,14 @@ body {
     transition: background 0.3s ease-in-out;
 }
 
+.input-box a {
+    display: block;
+    color: white; /* Set the text color to white */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
 .input-box button:hover {
     background: rgb(131, 124, 230); 
 } 
-

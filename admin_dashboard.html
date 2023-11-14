@@ -7,22 +7,39 @@
     <link rel="stylesheet" href="admin_dashboard.css">
 </head>
 <body>
+
+   <ul class="navbar">
+        <li><a href="staff_dashboard.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <ul class="SignLog">
+            <li><a href="logins.php">LogOut</a></li>
+        </ul>
+    </ul>
+
     <div class="wrapper">
         <form action="">
-            <h1>Admin Dashboard</h1>
+            <h1>Staff Dashboard</h1>
             <div class="input-box">
-                <button type="button" class="btn">Add Staff</button>
+                <button type="button" class="btn"><a href="add_staff.php">Add Patient</a></button>
             </div>
             <div class="input-box">
-                <button type="button" class="btn">Update Staff</button>
+                <button type="button" class="btn"><a href="patient_details.php">Update Patient</a></button>
             </div>
             <div class="input-box">
-                <button type="button" class="btn">Delete Staff</button>
+                <button type="button" class="btn"><a href="del_staff.php">Delete Patient</a></button>
             </div>
             <div class="input-box">
-                <button type="button" class="btn">View Records</button>
+                <button type="button" class="btn"><a href="patient_details.php">Generate Report</a></button>
+            </div>
+            <div class="input-box">
+                <button type="button" class="btn"><a href="patient_details.php">Medical Treatment</a></button>
+            </div>
+            <div class="input-box">
+                <button type="button" class="btn"><a href="patient_details.php">View Records</a></button>
             </div>
         </form>
     </div>
 </body>
-</html>
+</html
