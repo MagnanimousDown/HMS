@@ -4,22 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Details</title>
-    <link rel="stylesheet" href="add_staff.css">
+    <link rel="stylesheet" href="updt_staff.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <script>
-        function validatePassword() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirmPassword").value;
-
-            if (password !== confirmPassword) {
-                alert("Password and Confirm Password do not match");
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </head>
 <body>
 
@@ -33,7 +19,7 @@
 
     <div class="wrapper">
         <form action="">
-            <h1>New Staff Details</h1>
+            <h1>Update Staff Details</h1>
             <div class="input-box">
                 <input type="text" placeholder="First Name" required>
             </div>
@@ -69,14 +55,6 @@
             <div class="input-box">
                 <span class="gender-label">DOB: </span>
                 <input type="date" placeholder="Date of Birth" required>
-            </div>
-
-             <!-- Password and Confirm Password fields -->
-             <div class="input-box">
-                <input type="password" placeholder="Password" id="password" required>
-            </div>
-            <div class="input-box">
-                <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
             </div>
 
             <button type="submit" class="btn">Submit</button>

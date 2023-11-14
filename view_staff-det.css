@@ -1,0 +1,62 @@
+/* Navigation bar Start */
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    width: 100%;
+    position: absolute; /* Set position to absolute */
+    top: 0; /* Position at the top */
+    font-weight: 600;
+}
+
+ul.navbar li {
+    float: left;
+}
+
+ul.navbar li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.navbar li a:hover {
+    background-color: #ddd;
+}
+
+ul.SignLog {
+    list-style-type: none;
+    margin: 0;
+    float: right;
+}
+
+ul.SignLog li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ul.SignLog li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Navigation bar End */
+
+.wrapperb {
+    width: 90%;
+    height: 300px;
+    background: rgba(143, 143, 143, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 30px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+    margin-top: 10px; /* Adjusted margin-top */
+}
