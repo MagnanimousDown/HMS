@@ -1,9 +1,51 @@
+<?php
+    // Connecting to the Db start
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "hms";
+
+    $con = mysqli_connect($server, $username, $password, $dbname);
+
+    if (!$con) {
+        die("Connection to this database failed due to" . mysqli_connect_error());
+    }
+
+    $message = ""; // Variable to store the insertion result message
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $staff_id = $_POST['staff_id'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $gender = $_POST['gender'];
+        $designation = $_POST['designation'];
+        $mob_no = $_POST['mob_no'];
+        $dob = $_POST['dob'];
+        $salary = $_POST['salary'];
+        $password = $_POST['password'];
+
+        $sql = "INSERT INTO `staff_details` (`staff_id`, `fname`, `lname`, `gender`, `designation`, `mob_no`, `dob`, `salary`, `password`) 
+                VALUES ('$staff_id', '$fname', '$lname', '$gender', '$designation', '$mob_no', '$dob', '$salary', '$password');";
+
+        $result = mysqli_query($con, $sql);
+
+        if ($result) {
+            $message = "Staff details added successfully!";
+        } else {
+            $message = "Error: " . mysqli_error($con);
+        }
+    }
+
+    // Close the database connection
+    mysqli_close($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Details</title>
+    <title>Staff Details</title>
     <link rel="stylesheet" href="add_staff.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -19,6 +61,12 @@
 
             return true;
         }
+
+        <?php
+            if (!empty($message)) {
+                echo "window.onload = function() { alert('$message'); }";
+            }
+        ?>
     </script>
 </head>
 <body>
@@ -32,16 +80,16 @@
     </ul>
 
     <div class="wrapper">
-        <form action="">
+        <form action="add_staff.php" method="post" onsubmit="return validatePassword()">
             <h1>New Staff Details</h1>
             <div class="input-box">
-                <input type="text" placeholder="First Name" required>
+                <input type="text" name="fname" placeholder="First Name" required>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Last Name" required>
+                <input type="text" name="lname" placeholder="Last Name" required>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Staff-ID" required>
+                <input type="text" name="staff_id" placeholder="Staff-ID" required>
             </div>
 
             <div class="input-box">
@@ -56,31 +104,31 @@
             <div class="input-box">
                 <label for="designation">Choose an option:</label>
                 <select id="designation" name="designation" required>
-                    <option value="option1">Doctor</option>
-                    <option value="option2">Nurse</option>
-                    <option value="option3">Ward Boy</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Ward Boy">Ward Boy</option>
                 </select>
             </div>
 
             <div class="input-box">
-                <input type="tel" placeholder="Mobile No." pattern="\d{10}" required>
+                <input type="tel" name="mob_no" placeholder="Mobile No." pattern="\d{10}" required>
             </div>
             
             <div class="input-box">
                 <span class="gender-label">DOB: </span>
-                <input type="date" placeholder="Date of Birth" required>
+                <input type="date" name="dob" placeholder="Date of Birth" required>
             </div>
 
             <div class="input-box">
-                <input type="number" placeholder="Salary" required>
+                <input type="number" name="salary" placeholder="Salary" required>
             </div>
 
-             <!-- Password and Confirm Password fields -->
-             <div class="input-box">
-                <input type="password" placeholder="Password" id="password" required>
+            <!-- Password and Confirm Password fields -->
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Confirm Password" id="confirmPassword" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
             </div>
 
             <button type="submit" class="btn">Submit</button>
