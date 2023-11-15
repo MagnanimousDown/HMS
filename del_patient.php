@@ -27,12 +27,16 @@ if (isset($_POST['delete_patient'])) {
             $lname = $patient_row['plname'];
             
             // Display confirmation message
+            echo '<div class="echo">';
+            echo '<style> .echo{color: #fff;}</style>';
             echo "Are you sure you want to delete the patient member with ID $patient_id, named $fname $lname?";
             echo '<form action="del_patient.php" method="post">
                     <input type="hidden" name="patient_id" value="' . $patient_id . '">
                     <button type="submit" class="btn" name="confirm_delete">Yes, Delete</button>
-                  </form>';
-            echo '<a href="delete_patient.php">No, Cancel</a>';
+                </form>';
+            echo '<a href="del_patient.php">No, Cancel</a>';
+            echo '</div>';
+
         } else {
             echo "patient member not found with ID $patient_id";
         }
@@ -67,8 +71,8 @@ mysqli_close($con);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Staff</title>
-    <link rel="stylesheet" href="del_staff.css">
+    <title>Delete Patient</title>
+    <link rel="stylesheet" href="del_patient.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
