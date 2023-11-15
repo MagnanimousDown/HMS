@@ -71,6 +71,10 @@
                 <input type="date" placeholder="Date of Birth" required>
             </div>
 
+            <div class="input-box">
+                <input type="number" placeholder="Salary" required>
+            </div>
+
              <!-- Password and Confirm Password fields -->
              <div class="input-box">
                 <input type="password" placeholder="Password" id="password" required>
