@@ -1,3 +1,51 @@
+<?php
+// Connecting to the Db start
+$server = "localhost";
+$username = "root";
+$password = "";
+$dbname = "hms";
+
+$con = mysqli_connect($server, $username, $password, $dbname);
+
+if (!$con) {
+    die("Connection to this database failed due to" . mysqli_connect_error());
+}
+
+$message = ""; // Variable to store the login result message
+
+if (isset($_POST['login'])) {
+    $admin_id = $_POST['admin_id'];
+    $password = $_POST['password'];
+
+    // Secure the input values to prevent SQL injection
+    $admin_id = mysqli_real_escape_string($con, $admin_id);
+    $password = mysqli_real_escape_string($con, $password);
+
+    $sql = "SELECT * FROM admin_login WHERE admin_id='$admin_id' AND password='$password'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        if ($row) {
+            // Login successful
+            $message = "Login successful!";
+            // Redirect to the dashboard page
+            header("Location: admin_dashboard.html");
+            exit(); // Ensure that no further code is executed after the redirection
+        } else {
+            // Invalid admin_id or password
+            $message = "Invalid admin_id or password";
+        }
+    } else {
+        // Query execution failed
+        $message = "Error executing query: " . mysqli_error($con);
+    }
+
+    // Close the database connection
+    mysqli_close($con);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +57,6 @@
     <style>
         body{}
     </style>
-
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -26,13 +73,13 @@
     
     <!-- Login Section -->
     <div class="wrapper">
-        <form action="">
+        <form action="adminLogin.php" method="post">
             <h1>Admin Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Admin ID" required>
+                <input type="text" name="admin_id" placeholder="Admin ID" required>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
 
             <!-- Forgot Password Section -->
@@ -41,7 +88,7 @@
             </div>
             
             <!-- Login Button -->
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn" name="login">Submit</button>
         </form>
     </div>
 </body>
