@@ -28,7 +28,6 @@ if (isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             // Login successful
-            $message = "Login successful!";
             // Redirect to the dashboard page
             header("Location: admin_dashboard.html");
             exit(); // Ensure that no further code is executed after the redirection
@@ -57,6 +56,12 @@ if (isset($_POST['login'])) {
     <style>
         body{}
     </style>
+    <script>
+        // This script shows the error message when the login fails
+        function showErrorMessage() {
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -73,8 +78,14 @@ if (isset($_POST['login'])) {
     
     <!-- Login Section -->
     <div class="wrapper">
-        <form action="adminLogin.php" method="post">
+        <form action="adminLogin.php" method="post" onsubmit="showErrorMessage()">
             <h1>Admin Login</h1>
+            
+            <!-- Error Message Section -->
+            <div id="errorMessage" style="color: red; display: <?php echo empty($message) ? 'none' : 'block'; ?>;">
+                <?php echo $message; ?>
+            </div>
+
             <div class="input-box">
                 <input type="text" name="admin_id" placeholder="Admin ID" required>
             </div>
