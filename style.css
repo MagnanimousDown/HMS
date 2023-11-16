@@ -16,10 +16,8 @@ body {
     background-size: cover;
     background-position: center;
     margin: 0;
-    position: relative; /* Set position to relative */
-
-    /* Apply a blur effect to the background image using a pseudo-element */
-    overflow: hidden; /* Hide the overflowing blur effect */
+    position: relative;
+    overflow: hidden;
 }
 
 body::before {
@@ -32,26 +30,24 @@ body::before {
     background-image: url('Images/main1.jpg');
     background-size: cover;
     background-position: center;
-    background-color: rgb(70, 65, 65,1);
+    background-color: rgb(70, 65, 65, 1);
     border: 10px solid rgba(28, 16, 16, 0.2);
     border-radius: 35px;
-    filter: blur(5px); /* Adjust the pixel value for the desired blur amount */
-    -webkit-filter: blur(5px); /* For older versions of webkit-based browsers */
-    z-index: -1; /* Move the pseudo-element behind the content */
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    z-index: -1;
 }
 
-
-/* Navigation bar Start */
 ul.navbar {
     list-style-type: none;
     margin-top: 30px;
-    padding:0;
+    padding: 0;
     overflow: hidden;
     background: rgba(154, 154, 154, 0.7);
     border-radius: 10px;
     width: 100%;
-    position: absolute; /* Set position to absolute */
-    top: 0; /* Position at the top */
+    position: absolute;
+    top: 0;
 }
 
 ul.navbar li {
@@ -89,8 +85,6 @@ ul.SignLog li a {
     text-decoration: none;
 }
 
-/* Navigation bar End */
-
 .wrappert {
     width: 90%;
     height: 220px;
@@ -100,7 +94,7 @@ ul.SignLog li a {
     padding: 30px 40px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #333;
-    margin-top: 20px; /* Adjusted margin-top */
+    margin-top: 20px;
 }
 
 .wrapperb {
@@ -112,9 +106,8 @@ ul.SignLog li a {
     padding: 30px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #333;
-    margin-top: 10px; /* Adjusted margin-top */
+    margin-top: 10px;
 }
-
 
 .wrappert h1 {
     font-size: 36px;
@@ -131,15 +124,15 @@ ul.SignLog li a {
     width: 50%;
     height: 40px;
     text-align: center;
-    background:transparent;
+    background: transparent;
     border: 2px solid #aaa;
     border-radius: 5px;
     font-size: 16px;
     color: #ffffff;
     padding: 10px;
     outline: none;
-    margin: 0 auto; /* Center the input box horizontally */
-    display: block; /* Ensure the input is treated as a block element */
+    margin: 0 auto;
+    display: block;
 }
 
 .input-box input::placeholder {
@@ -148,7 +141,7 @@ ul.SignLog li a {
 
 .button-container {
     display: flex;
-    justify-content: space-around; /* Adjust this based on your design */
+    justify-content: space-around;
     padding-left: 200px;
     padding-right: 200px;
 }
@@ -160,16 +153,53 @@ ul.SignLog li a {
     border: none;
     outline: none;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     font-size: 16px;
     color: #fff;
     font-weight: 600;
     transition: background 0.3s ease-in-out;
-    margin: 0 auto; /* Center the input box horizontally */
-    display: block; /* Ensure the input is treated as a block element */
+    margin: 0 auto;
+    display: block;
 }
 
 .wrappert .btn:hover {
+    background: #45a049;
+}
+
+.coach-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.coach-table th, .coach-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.coach-table th {
+    background-color: #f2f2f2;
+}
+
+.button-container form button[name="refresh"] {
+    width: 25%;
+    height: 45px;
+    background: #4caf50;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+    margin: 0 auto;
+    display: block;
+}
+
+.button-container form button[name="refresh"]:hover {
     background: #45a049;
 }
