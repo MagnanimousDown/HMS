@@ -1,117 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Staff Details</title>
-    <link rel="stylesheet" href="view_staff-det.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('Images/admin_dashboard.jpg');
+    background-color: #cccccc;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
 
-<body>
-    <!-- Navigation Bar -->
-    <ul class="navbar">
-        <li><a href="admin_dashboard.html">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <ul class="SignLog">
-            <li><a href="logins.php">Login</a></li>
-        </ul>
-    </ul>
-
-    <!-- Login Section -->
-    <div class="wrappert">
-        <form action="" method="post">
-            <h1>View Staff Details</h1>
-
-            <div class="input-box">
-                <input type="text" name="staff_id" placeholder="Staff ID" required>
-            </div>
-
-            <div class="button-container">
-                <button type="submit" name="staff_details" class="btn">View Staff Details</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="wrapperb">
-        <?php
-        session_start();
-
-        $server = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "hms";
-
-        // Create connection
-        $conn = new mysqli($server, $username, $password, $dbname);
-
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Check if the form has been submitted
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // Check which button was clicked
-            if (isset($_POST["staff_details"])) {
-                $staff_id = $_POST["staff_id"];
-                // Fetch and display staff records only if staff ID is provided
-                if (!empty($staff_id)) {
-                    $sql = "SELECT staff_id, fname, lname, gender, designation, mob_no, dob, salary FROM staff_details 
-                            WHERE staff_id = '$staff_id'";
-                    $result = $conn->query($sql);
-                    displayResults($result);
-                } else {
-                    echo "Please enter a valid staff ID.";
-                }
-            } elseif (isset($_POST["refresh"])) {
-                // Clear displayed data by unsetting the session variable
-                unset($_SESSION['result']);
-            }
-
-            // Close the database connection
-            $conn->close();
-        }
-
-        // Function to display query results in a table
-        function displayResults($result)
-        {
-            if ($result->num_rows > 0) {
-                echo "<table class='coach-table'>";
-                echo "<tr><th>Staff ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>Designation</th><th>Mobile No</th><th>Date of Birth</th><th>Salary</th></tr>";
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["staff_id"] . "</a></td>";
-                    echo "<td>" . $row["fname"] . "</td>";
-                    echo "<td>" . $row["lname"] . "</td>";
-                    echo "<td>" . $row["gender"] . "</td>";
-                    echo "<td>" . $row["designation"] . "</td>";
-                    echo "<td>" . $row["mob_no"] . "</td>";
-                    echo "<td>" . $row["dob"] . "</td>";
-                    echo "<td>" . $row["salary"] . "</td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<p>No Staff Member found</p>";
-            }
-        }
-        ?>
-        
-    </div>
-
-    <div class="button-containert">
-        <form action="" method="post">
-            <button type="submit" name="refresh" class="btn-refresh">Refresh</button>
-        </form>
-    </div>
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Images/admin_dashboard.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(70, 65, 65, 1);
+    border: 10px solid rgba(28, 16, 16, 0.2);
+    border-radius: 35px;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    z-index: -1;
+}
 
 
+/* Navigation bar Start */
 
-</body>
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    width: 100%;
+    position: absolute; /* Set position to absolute */
+    top: 0; /* Position at the top */
+    font-weight: 600;
+}
 
-</html>
+ul.navbar li {
+    float: left;
+}
+
+ul.navbar li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.navbar li a:hover {
+    background-color: #ddd;
+}
+
+ul.SignLog {
+    list-style-type: none;
+    margin: 0;
+    float: right;
+}
+
+ul.SignLog li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+ul.SignLog li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Navigation bar End */
+
+.wrappert {
+    width: 90%;
+    height: 220px;
+    border: 2px solid rgba(255, 255, 255, 0.766);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 30px 40px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+    margin-top: 20px;
+}
+
+.wrapperb {
+    width: 90%;
+    height: 300px;
+    border: 2px solid rgba(255, 255, 255, 0.766);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 30px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #333;
+    margin-top: 10px;
+}
+
+.wrappert h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.wrappert .input-box {
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    background: transparent;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 10px;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+}
+
+.input-box input::placeholder {
+    color: #888;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.button-containert {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.btn {
+    width: 25%;
+    height: 45px;
+    background: #4caf50;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+    margin: 0 auto;
+    display: block;
+}
+
+.btn:hover {
+    background: #45a049;
+}
+
+.coach-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.coach-table th, .coach-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.coach-table th {
+    background-color: #f2f2f2;
+}
+
+/* Add these styles to your existing CSS code */
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.btn {
+    width: 25%;
+    height: 45px;
+    background: #4caf50;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+    margin: 0 auto;
+    display: block;
+}
+
+.btn:hover {
+    background: #45a049;
+}
+
+.button-containert {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.btn-refresh {
+    width: 25%;
+    height: 45px;
+    background: #3498db; /* Change the color as needed */
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+    margin: 0 auto;
+    display: block;
+}
+
+.btn-refresh:hover {
+    background: #2980b9; /* Change the color as needed */
+}
