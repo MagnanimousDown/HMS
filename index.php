@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,32 +37,43 @@
 
     <div class="wrapperb">
         <?php
-        $server = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "hms";       
-        
-        // Create connection
-        $conn = new mysqli($server, $username, $password, $dbname);
-        
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Handle form submissions
+        // Check if the form has been submitted
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $server = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "hms";       
+            
+            // Create connection
+            $conn = new mysqli($server, $username, $password, $dbname);
+            
+            // Check the connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
             $patient_id = $_POST["patient_id"];
 
             if (isset($_POST["patient_records"])) {
-                // Fetch and display patient records
-                $result = $conn->query("SELECT * FROM patient_report WHERE patient_id = '$patient_id'");
-                displayResults($result);
+                // Fetch and display patient records only if patient ID is provided
+                if (!empty($patient_id)) {
+                    $result = $conn->query("SELECT * FROM patient_report WHERE patient_id = '$patient_id'");
+                    displayResults($result);
+                } else {
+                    echo "Please enter a valid Patient ID.";
+                }
             } elseif (isset($_POST["treatment_procedure"])) {
-                // Fetch and display treatment procedures
-                $result = $conn->query("SELECT * FROM medical_procedure WHERE patient_id = '$patient_id'");
-                displayResults($result);
+                // Fetch and display treatment procedures only if patient ID is provided
+                if (!empty($patient_id)) {
+                    $result = $conn->query("SELECT * FROM medical_procedure WHERE patient_id = '$patient_id'");
+                    displayResults($result);
+                } else {
+                    echo "Please enter a valid Patient ID.";
+                }
             }
+
+            // Close the database connection
+            $conn->close();
         }
 
         // Function to display query results in a table
@@ -78,9 +88,6 @@
             }
             echo "</table>";
         }
-
-        // Close the database connection
-        $conn->close();
         ?>
     </div>
 
