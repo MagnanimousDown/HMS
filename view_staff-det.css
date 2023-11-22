@@ -126,6 +126,7 @@ ul.SignLog li a {
 
 .wrappert .input-box {
     margin-bottom: 20px;
+    
 }
 
 .input-box input {
@@ -133,7 +134,7 @@ ul.SignLog li a {
     height: 40px;
     text-align: center;
     background: transparent;
-    border: 2px solid #aaa;
+    border: 2px solid #f6f4f4ab;
     border-radius: 5px;
     font-size: 16px;
     color: #ffffff;
@@ -185,11 +186,13 @@ ul.SignLog li a {
 .coach-table {
     width: 100%;
     border-collapse: collapse;
+    
     margin-top: 20px;
 }
 
 .coach-table th, .coach-table td {
     border: 1px solid #ddd;
+    background-color: rgba(242, 242, 242, 0.536);
     padding: 10px;
     text-align: center;
 }
