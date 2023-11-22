@@ -60,9 +60,12 @@
                 if (isset($_POST["patient_id"])) {
                     $patient_id = $_POST["patient_id"];
                     if (!empty($patient_id)) {
-                        $sql = "SELECT sd.staff_id, sd.fname, sd.lname, sd.gender, sd.designation, sd.mob_no, sd.dob, sd.salary FROM staff_details sd 
-                                JOIN patient_report pr ON sd.staff_id = pr.staff_id
-                                WHERE pr.patient_id = '$patient_id'";
+                        $sql = "SELECT pd.patient_id, pd.pfname, pd.plname, pr.disease, pr.diagnosis, mp.procedure_name, mp.procedure_desc
+                                FROM patient_details pd
+                                JOIN patient_report pr ON pd.patient_id = pr.patient_id
+                                JOIN medical_procedure mp ON pr.patient_id = mp.patient_id
+                                WHERE pd.patient_id = '$patient_id'";
+                        
                         $result = $conn->query($sql);
                         displayResults($result);
                     } else {
@@ -82,22 +85,21 @@
         {
             if ($result->num_rows > 0) {
                 echo "<table class='coach-table'>";
-                echo "<tr><th>Staff ID</th><th>First Name</th><th>Last Name</th><th>Gender</th><th>Designation</th><th>Mobile No</th><th>Date of Birth</th><th>Salary</th></tr>";
+                echo "<tr><th>Patient ID</th><th>First Name</th><th>Last Name</th><th>Disease</th><th>Diagnosis</th><th>Procedure Name</th><th>Procedure Description</th></tr>";
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>" . $row["staff_id"] . "</a></td>";
-                    echo "<td>" . $row["fname"] . "</td>";
-                    echo "<td>" . $row["lname"] . "</td>";
-                    echo "<td>" . $row["gender"] . "</td>";
-                    echo "<td>" . $row["designation"] . "</td>";
-                    echo "<td>" . $row["mob_no"] . "</td>";
-                    echo "<td>" . $row["dob"] . "</td>";
-                    echo "<td>" . $row["salary"] . "</td>";
+                    echo "<td>" . $row["patient_id"] . "</td>";
+                    echo "<td>" . $row["pfname"] . "</td>";
+                    echo "<td>" . $row["plname"] . "</td>";
+                    echo "<td>" . $row["disease"] . "</td>";
+                    echo "<td>" . $row["diagnosis"] . "</td>";
+                    echo "<td>" . $row["procedure_name"] . "</td>";
+                    echo "<td>" . $row["procedure_desc"] . "</td>";
                     echo "</tr>";
                 }
                 echo "</table>";
             } else {
-                echo "<p>No Staff Member found</p>";
+                echo "<p>No Records found</p>";
             }
         }
         ?>
