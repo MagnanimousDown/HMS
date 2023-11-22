@@ -88,7 +88,7 @@ mysqli_close($con);
     <!-- Delete Staff Section -->
     <div class="wrapper">
         <form action="del_patient.php" method="post">
-            <h1>Delete Staff</h1>
+            <h1>Delete Patient</h1>
             <div class="input-box">
                 <input type="text" name="patient_id" placeholder="patient ID" required>
             </div>
