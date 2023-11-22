@@ -183,7 +183,7 @@ ul.SignLog li a {
     background-color: #f2f2f2;
 }
 
-.button-container form button[name="refresh"] {
+/* .button-container form button[name="refresh"] {
     width: 25%;
     height: 45px;
     background: #4caf50;
@@ -202,4 +202,28 @@ ul.SignLog li a {
 
 .button-container form button[name="refresh"]:hover {
     background: #45a049;
+} */
+
+.button-container form button[name="refresh"] {
+    width: 150px;
+    height: 45px;
+    background: #4caf50;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease-in-out;
+    margin: 10px auto;
+    display: block;
 }
+
+.button-container form button[name="refresh"]:hover {
+    background: #45a049;
+}
+
+
+
