@@ -27,7 +27,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('Images/main1.jpg');
+    background-image: url('Images/admin_dashboard.jpg');
     background-size: cover;
     background-position: center;
     background-color: rgb(70, 65, 65, 1);
@@ -38,16 +38,23 @@ body::before {
     z-index: -1;
 }
 
+
+/* Navigation bar Start */
+
 ul.navbar {
     list-style-type: none;
-    margin-top: 30px;
-    padding: 0;
+    margin: 0;
+    padding:0;
     overflow: hidden;
-    background: rgba(154, 154, 154, 0.7);
-    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
     width: 100%;
-    position: absolute;
-    top: 0;
+    position: absolute; /* Set position to absolute */
+    top: 0; /* Position at the top */
+    font-weight: 600;
 }
 
 ul.navbar li {
@@ -56,7 +63,7 @@ ul.navbar li {
 
 ul.navbar li a {
     display: block;
-    color: #333;
+    color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -79,18 +86,19 @@ ul.SignLog li {
 
 ul.SignLog li a {
     display: block;
-    color: #333;
+    color: #fff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
+/* Navigation bar End */
 
 .wrappert {
     width: 90%;
     height: 220px;
-    background: rgba(143, 143, 143, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.766);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
     padding: 30px 40px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #333;
@@ -100,9 +108,9 @@ ul.SignLog li a {
 .wrapperb {
     width: 90%;
     height: 300px;
-    background: rgba(143, 143, 143, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.766);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
     padding: 30px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #333;
@@ -230,7 +238,7 @@ ul.SignLog li a {
 .btn-refresh {
     width: 25%;
     height: 45px;
-    background: #3498db; /* Change the color as needed */
+    background: #4caf50;
     border: none;
     outline: none;
     border-radius: 5px;
@@ -245,5 +253,5 @@ ul.SignLog li a {
 }
 
 .btn-refresh:hover {
-    background: #2980b9; /* Change the color as needed */
+    background: #45a049;
 }
