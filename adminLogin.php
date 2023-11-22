@@ -54,7 +54,133 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="staffLog.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        body{}
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+            }
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-image: url('Images/admin_dashboard.jpg');
+                background-color: #cccccc;
+                background-size: cover;
+                background-position: center;
+                margin: 0;
+            }
+
+
+            .wrapper { 
+                margin-top: 40px;
+                width: 420px;
+                background: transparent;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(20px);
+                border-radius: 10px;
+                padding: 30px 40px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);    color: #333;
+            }
+
+            .wrapper h1 {
+                font-size: 36px;
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .wrapper .input-box {
+                position: relative;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .input-box input {
+                width: 100%;
+                height: 40px;
+                background: transparent;
+                border: 2px solid #aaa;
+                border-radius: 5px;
+                font-size: 16px;
+                color: #333;
+                padding: 10px;
+                outline: none;
+            }
+
+            .input-box input::placeholder {
+                color: #888;
+            }
+
+            .wrapper .gender-label {
+                display: block;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            /* Display Male and Female options with radio buttons and labels on the same line */
+            .wrapper .gender-options label {
+                display: inline-flex;
+                align-items: center;
+                margin-bottom: 5px;
+            }
+
+            .wrapper .input-box input[type="radio"] {
+                transform: scale(0.9); /* Adjust the scale factor as needed */
+                margin-right: 5px; /* Optional: Add some spacing between the radio button and label */
+            }
+
+            .wrapper .btn {
+                width: 100%;
+                height: 45px;
+                background: #3dffa8;
+                background: transparent;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border: 2px solid rgba(255, 255, 255, .2);
+                cursor: pointer;
+                font-size: 16px;
+                color: #fff;
+                font-weight: 600;
+                transition: background 0.3s ease-in-out;
+            }
+
+            .wrapper .btn:hover {
+                background: rgb(131, 124, 230); 
+            }
+
+            /* ... Your existing CSS rules ... */
+
+            .input-box select {
+                width: 100%;
+                height: 40px;
+                background-color: transparent;
+                border: 2px solid #aaa;
+                border-radius: 5px;
+                font-size: 16px;
+                color: #333;
+                outline: none;
+                padding: 5px; /* Adjust the padding as needed */
+                appearance: none; /* Remove default arrow in some browsers */
+                background-image: url('path-to-your-arrow-icon.png'); /* Optional: Custom arrow icon */
+                background-position: right center;
+                background-repeat: no-repeat;
+            }
+
+            .input-box select option {
+                background: #333;
+                color: #fff;
+            }
+
+
+            .input-box input::placeholder {
+                color: #ebe4e4;
+            }
+
     </style>
     <script>
         // This script shows the error message when the login fails
